@@ -1,13 +1,21 @@
 version: "3.3"
 
 services:
+  http-server:
+    container_name: http-server
+    image: node:16.17.0-buster
+    restart: on-failure
+    command: npx http-server /var/www -p 5000
+    volumes:
+      - ./public:/var/www
+
   http-proxy:
     build: .
     container_name: http-proxy
     restart: on-failure
     environment:
       MODE: http-proxy-middleware
-      TARGET: http://127.0.0.1:5000
+      TARGET: http://http-server:5000
       PORT: 7000
     ports:
       - "7000:7000"
