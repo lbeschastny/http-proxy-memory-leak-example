@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  http-proxy:
+    build: .
+    container_name: http-proxy
+    restart: on-failure
+    environment:
+      MODE: http-proxy-middleware
+      TARGET: http://127.0.0.1:5000
+      PORT: 7000
+    ports:
+      - "7000:7000"
