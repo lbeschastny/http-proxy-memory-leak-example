@@ -20,3 +20,9 @@ services:
       MEMORY_USAGE_INTERVAL: 10000
     ports:
       - "7000:7000"
+
+  loadtest:
+    container_name: loadtest
+    image: node:16.17.0-buster
+    restart: on-failure
+    command: bash -c 'while :; do curl -s -I -X GET http://http-proxy:7000/sample.png > /dev/null; done'
