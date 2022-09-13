@@ -5,7 +5,7 @@ services:
     container_name: http-server
     image: node:16.17.0-buster
     restart: on-failure
-    command: npx http-server /var/www -p 5000
+    command: npx http-server /var/www -p 5000 -s
     volumes:
       - ./public:/var/www
 
@@ -17,5 +17,6 @@ services:
       MODE: http-proxy-middleware
       TARGET: http://http-server:5000
       PORT: 7000
+      MEMORY_USAGE_INTERVAL: 10000
     ports:
       - "7000:7000"
