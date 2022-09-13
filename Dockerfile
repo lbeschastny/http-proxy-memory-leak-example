@@ -1,4 +1,5 @@
-FROM node:16.17.0-buster
+ARG NODE_VERSION=${NODE_VERSION};
+FROM node:${NODE_VERSION}-buster
 
 ENV NODE_ENV="production" \
     USER="http-proxy" UID=1006 \

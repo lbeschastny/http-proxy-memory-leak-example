@@ -3,14 +3,17 @@ version: "3.3"
 services:
   http-server:
     container_name: http-server
-    image: node:16.17.0-buster
+    image: node:${NODE_VERSION}-buster
     restart: on-failure
     command: npx http-server /var/www -p 5000 -s
     volumes:
       - ./public:/var/www
 
   http-proxy:
-    build: .
+    build:
+      context: .
+      args:
+        - NODE_VERSION
     container_name: http-proxy
     restart: on-failure
     environment:
@@ -23,6 +26,9 @@ services:
 
   loadtest:
     container_name: loadtest
-    image: node:16.17.0-buster
+    image: node:${NODE_VERSION}-buster
     restart: on-failure
-    command: bash -c 'while :; do curl -s -I -X GET http://http-proxy:7000/sample.png > /dev/null; done'
+    command: bash -c 'sleep 3; while :; do curl -s -I -X GET http://http-proxy:7000/sample.png > /dev/null; done'
+    depends_on:
+      - http-server
+      - http-proxy
