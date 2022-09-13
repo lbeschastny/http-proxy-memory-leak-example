@@ -17,10 +17,10 @@ services:
     container_name: http-proxy
     restart: on-failure
     environment:
-      MODE: http-proxy-middleware
-      TARGET: http://http-server:5000
-      PORT: 7000
-      MEMORY_USAGE_INTERVAL: 10000
+      - MODE
+      - MEMORY_USAGE_INTERVAL
+      - TARGET=http://http-server:5000
+      - PORT=7000
     ports:
       - "7000:7000"
 
