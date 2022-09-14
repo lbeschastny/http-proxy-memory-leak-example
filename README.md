@@ -20,11 +20,11 @@ Run the server:
 ```sh
 npm start
 
-# or o use express with http-proxy-middleware
+# or to use express with http-proxy-middleware
 MODE=http-proxy-middleware npm start
 ```
 
-Start meking requests from TTY:
+Start making requests from TTY:
 
 
 ```sh
