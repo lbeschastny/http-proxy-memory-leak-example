@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "prestart": "http-server public -p ${HTTP_SERVER_PORT:-5000} -s &",
-    "start": "node --max-old-space-size=256 src/index.js",
+    "start": "node --max-old-space-size=128 src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
