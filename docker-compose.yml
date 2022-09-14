@@ -20,6 +20,6 @@ services:
     container_name: loadtest
     image: node:${NODE_VERSION}-buster
     restart: on-failure
-    command: bash -c 'sleep 3; while :; do curl -s -I -X GET http://http-proxy:7000/sample.png > /dev/null; done'
+    command: script -qefc "bash -c 'sleep 3; while :; do curl -s -I -X GET http://http-proxy:7000/sample.png > /dev/null; done'" /dev/null
     depends_on:
       - http-proxy
