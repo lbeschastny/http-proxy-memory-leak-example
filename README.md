@@ -19,6 +19,9 @@ Run the server:
 
 ```sh
 npm start
+
+# or o use express with http-proxy-middleware
+MODE=http-proxy-middleware npm start
 ```
 
 Start meking requests from TTY:
@@ -36,6 +39,13 @@ Run docker-compose:
 sudo docker-compose up --build
 ```
 
+Dockerized environment uses express with http-proxy-middleware by default.
+To use build-in http server remove thhe following line fron `.env` file:
+
+```
+MODE=http-proxy-middleware
+```
+
 ## Memory leak
 
 Running the above code results in a memoy leak and crush the server after a minute or so:
@@ -48,6 +58,8 @@ Running the above code results in a memoy leak and crush the server after a minu
 > http-proxy-memory-leak-example@1.0.0 start
 > node --max-old-space-size=128 src/index.js
 
+using http-proxy-middleware
+[HPM] Proxy created: /  -> http://127.0.0.1:5000
 server is listenning on port 7000
 (node:535729) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
 (Use `node --trace-deprecation ...` to show where the warning was created)

@@ -2,6 +2,8 @@ const http = require('http');
 const { createProxyServer } = require('http-proxy');
 
 exports.createServer = (target, port) => {
+	console.log('using build-in http server');
+
 	const proxy = createProxyServer({ target });
 
 	http
