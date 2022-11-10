@@ -7,6 +7,10 @@ Original issues:
  * https://github.com/http-party/node-http-proxy/issues/1586
  * https://github.com/chimurai/http-proxy-middleware/issues/782
 
+Fix:
+
+ * https://github.com/http-party/node-http-proxy/pull/1559
+
 ## Running locally
 
 Install dependencies:
@@ -39,8 +43,7 @@ Run docker-compose:
 sudo docker-compose up --build
 ```
 
-Dockerized environment uses express with http-proxy-middleware by default.
-To use build-in http server remove thhe following line fron `.env` file:
+To use express with http-proxy-middleware in dockerized environment add the following line to `.env` file:
 
 ```
 MODE=http-proxy-middleware
